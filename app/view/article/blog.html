@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>博文列表-宣泄笔记个人博客</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="public/css/base.css" rel="stylesheet">
+<link href="public/css/style.css" rel="stylesheet">
+<link href="public/css/media.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+<!--[if lt IE 9]>
+<script src="public/js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<div class="ibody">
+  <header>
+    <h1>如影随形</h1>
+    <h2>影子是一个会撒谎的精灵，它在虚空中流浪和等待被发现之间;在存在与不存在之间....</h2>
+    <div class="logo"><a href="/"></a></div>
+    <nav id="topnav">
+      <a href="index.php">首页</a>
+      <a href="index.php?c=index&a=about">关于我</a>
+      <a href="index.php?c=article&a=blog">博文</a>
+      <a href="index.php?c=person&a=words">留言</a>
+      {if (empty($_SESSION['id']))}
+      <a href="index.php?c=user&a=login">登录</a>
+      <a href="index.php?c=user&a=register">注册</a>
+      {else}
+      <span style="color: green;">欢迎回来：<span style="color: red;padding-right: 10px;">{$_SESSION['name']}</span>
+      <a href="index.php?c=user&a=doOut" style="font-size: 16px;padding-right: 0;padding-left: 0;color: #fff;">退出</a>
+      <a href="index.php?c=user&a=register">注册</a>
+      {if ($_SESSION['udertype'])}
+      <a href="index.php?c=admin&a=adminlogin" target="_blank">管理中心</a>
+      {/if}
+      {/if}
+    </nav>
+  </header>
+  <article>
+    <h2 class="about_h">您现在的位置是：<a href="/">首页</a>><a href="1/">博文列表</a></h2>
+    {if !empty($navs)}
+    <span style="color: blue"><a href="index.php?c=article&a=blog">全部博客</a></span>
+    {foreach $navs as $value}
+    <span style="color: red"><a href="index.php?c=article&a=Blogpost&id={$value['cid']}">{$value['catename']}</a></span>
+    {/foreach}
+    {/if}
+    <div class="bloglist">
+      {if !empty($blog)}
+      {foreach $blog as $value}
+      <div class="newblog">
+        <ul>
+          <h3><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></h3>
+          <div class="autor"><span>作者：{$value['name']}</span><span>分类：[<a href="/">{$value['catename']}</a>]</span><span>浏览（<a href="/">{$value['lookcount']}</a>）</span><span>评论（<a href="/">{$value['replycount']}</a>）</span></div>
+          <p>{$value['content']}<a href="index.php?c=article&a=details&id={$value['id']}" class="readmore">全文</a></p>
+        </ul>
+
+        <figure><img src="{$value['pic']}" ></figure>
+
+        <div class="dateview">{$value['sendtime']}</div>
+      </div>
+      {/foreach}
+<!--
+      <a title="Total record"><b>113</b></a><b>1</b><a href="/">2</a><a href="/">3</a><a href="/">4</a><a href="/">5</a><a href="/">&gt;</a><a href="/">&gt;&gt;</a>
+-->
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['first']}">首页</a></span>
+      <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['prev']}" hidefocus="">上一页</a></span>
+      <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['next']}" hidefocus="">下一页</a></span>
+      <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['end']}" class="next">尾页</a></span>
+    {/if}
+
+    {if !empty($navs2)}
+    <span style="color: blue"><a href="index.php?c=article&a=blog">全部博客</a></span>
+    {foreach $navs2 as $value}
+    <span style="color: red"><a href="index.php?c=article&a=Blogpost&id={$value['cid']}">{$value['catename']}</a></span>
+    {/foreach}
+    {/if}
+    <div class="bloglist">
+      {if !empty($blog2)}
+      {foreach $blog2 as $value}
+      <div class="newblog">
+        <ul>
+          <h3 ><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></h3>
+          <div class="autor"><span>作者：{$value['name']}</span><span>分类：[<a href="/">{$value['catename']}</a>]</span><span>浏览（<a href="/">{$value['lookcount']}</a>）</span><span>评论（<a href="/">{$value['replycount']}</a>）</span></div>
+          <p>{$value['content']}<a href="index.php?c=article&a=details&id={$value['id']}"  class="readmore">全文</a></p>
+        </ul>
+
+        <figure><img src="{$value['pic']}" ></figure>
+
+        <div class="dateview">{$value['sendtime']}</div>
+      </div>
+      {/foreach}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['first']}">首页</a></span>
+        <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['prev']}" hidefocus="">上一页</a></span>
+        <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['next']}" hidefocus="">下一页</a></span>
+        <span style="color: #639BB0;border: 1px solid #333;margin: 8px;font-size: 18px"><a href="{$totalPage['end']}" class="next">尾页</a></span>
+    {/if}
+  </article>
+  <aside>
+    <div class="rnav">
+      <li class="rnav1 "><a href="/">日记</a></li>
+      <li class="rnav2 "><a href="/">欣赏</a></li>
+      <li class="rnav3 "><a href="/">程序人生</a></li>
+      <li class="rnav4 "><a href="/">经典语录</a></li>
+    </div>
+    <div class="ph_news">
+      <h2>
+        <p>点击排行</p>
+      </h2>
+      <ul class="ph_n">
+        {if !empty($manyArticle)}
+        {foreach $manyArticle as $value}
+        <li><span class="num1">{$value['id']}</span><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></li>
+        {/foreach}
+        {/if}
+          {if !empty($manyArticle1)}
+          {foreach $manyArticle1 as $value}
+          <li><span class="num1">{$value['id']}</span><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></li>
+          {/foreach}
+          {/if}
+      </ul>
+      <h2>
+        <p>栏目推荐</p>
+      </h2>
+      <ul>
+        {if !empty($replyArticle)}
+        {foreach $replyArticle as $value}
+        <li><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></li>
+        {/foreach}
+        {/if}
+          {if !empty($replyArticle1)}
+          {foreach $replyArticle1 as $value}
+          <li><a href="index.php?c=article&a=details&id={$value['id']}">{$value['title']}</a></li>
+          {/foreach}
+          {/if}
+      </ul>
+      <h2>
+        <p>最新评论</p>
+      </h2>
+      <ul class="pl_n">
+        <dl>
+          <dt><img src="public/images/s8.jpg"> </dt>
+          <dt> </dt>
+          <dd>DanceSmile
+            <time>49分钟前</time>
+          </dd>
+          <dd><a href="/">文章非常详细，我很喜欢.前端的工程师很少，我记得几年前yahoo花高薪招聘前端也招不到</a></dd>
+        </dl>
+        <dl>
+          <dt><img src="public/images/s7.jpg"> </dt>
+          <dt> </dt>
+          <dd>yisa
+            <time>2小时前</time>
+          </dd>
+          <dd><a href="/">我手机里面也有这样一个号码存在</a></dd>
+        </dl>
+        <dl>
+          <dt><img src="public/images/s6.jpg"> </dt>
+          <dt> </dt>
+          <dd>小林博客
+            <time>8月7日</time>
+          </dd>
+          <dd><a href="/">博客色彩丰富，很是好看</a></dd>
+        </dl>
+        <dl>
+          <dt><img src="public/images/003.jpg"> </dt>
+          <dt> </dt>
+          <dd>DanceSmile
+            <time>49分钟前</time>
+          </dd>
+          <dd><a href="/">文章非常详细，我很喜欢.前端的工程师很少，我记得几年前yahoo花高薪招聘前端也招不到</a></dd>
+        </dl>
+        <dl>
+          <dt><img src="public/images/002.jpg"> </dt>
+          <dt> </dt>
+          <dd>yisa
+            <time>2小时前</time>
+          </dd>
+          <dd><a href="/">我手机里面也有这样一个号码存在</a></dd>
+        </dl>
+      </ul>
+      <h2>
+        <p>最近访客</p>
+        <ul>
+          <img src="public/images/vis.jpg"><!-- 直接使用“多说”插件的调用代码 -->
+        </ul>
+      </h2>
+    </div>
+    <div class="copyright">
+      <ul>
+        <p> Design by <a href="index.php">宣泄笔记</a></p>
+        <p>赣ICP备11002373号-1</p>
+      </ul>
+    </div>
+  </aside>
+  <script src="public/js/silder.js"></script>
+  <div class="clear"></div>
+  <!-- 清除浮动 --> 
+</div>
+</body>
+</html>

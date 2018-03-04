@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>头像上传</title>
+    <style>
+        .xs2{
+            font-size: 18px;
+            color: #ee77aa;
+        }
+    </style>
+</head>
+<body>
+    <form action="index.php?c=index&a=Upsrc" method="post" enctype='multipart/form-data'>
+        <table>
+            <tr>
+               <td>
+                   <img src="{$pic[0]['pic']}" style="border:1px solid #fff" />
+                   <h2 class="xs2">设置我的新头像</h2><br />
+                   <input type="file" name="file" style="height:23px; width:300px;" />
+                   <input type="submit" value="上传" />
+               </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

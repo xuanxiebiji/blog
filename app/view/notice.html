@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>提示页面</title>
+		<meta http-equiv="refresh" content="{$sec},url={$url}">
+		<link href="public/css/bootstrap.css" rel='stylesheet' type='text/css' />
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="public/js/jquery1.min.js"></script>
+		 <!-- Custom Theme files -->
+		<link href="public/css/style1.css" rel='stylesheet' type='text/css' />
+   		 <!-- Custom Theme files -->
+   		  <!---- start-smoth-scrolling---->
+		<script type="text/javascript" src="public/js/move-top.js"></script>
+		<script type="text/javascript" src="public/js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+		 <!---- start-smoth-scrolling---->
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		</script>
+		<!-- webfonts -->
+		<link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Asap:400,700' rel='stylesheet' type='text/css'>
+		<!-- webfonts -->
+	</head>
+	<body>
+		<!-- container -->
+			<!-- header -->
+			<div id="totop" class="header">
+				<!-- /menu -->
+				<!-- script-for-menu -->
+				<script>
+					$(document).ready(function(){
+						$(".menu ul").hide();
+						$("span.menu-icon").click(function(){
+							$(".menu ul").slideToggle(500);
+						});
+						
+					});
+				</script>
+				<!-- /script-for-menu -->
+				<!-- header-info -->
+				<div class="header-info text-center">
+					<!--<h2>We've got the special power</h2>-->
+					<span> </span>
+					<h1>{$msg}</h1>
+					<a href="#intro"  class="scroll"><label class="downarrow"> </label></a>
+				</div>
+				<!-- /header-info -->
+			</div>
+			<!-- /header -->
+	</body>
+</html>
+
