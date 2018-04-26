@@ -189,6 +189,7 @@ class AdminController extends Controller
     //这是加载留言页面的方法
     public function adminwords()
     {
+        
         //查询留言的条数
         $numwords = $this->admin->table('words')->field('count(id)')->select();
         $this->assign('numwords',$numwords);
